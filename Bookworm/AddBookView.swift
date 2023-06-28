@@ -14,7 +14,7 @@ struct AddBookView: View {
     @State private var title = ""
     @State private var author = ""
     @State private var rating = 3
-    @State private var genre = ""
+    @State private var genre = "Fantasy"
     @State private var review = ""
     
     let genres = [
@@ -22,7 +22,7 @@ struct AddBookView: View {
     ]
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             Form {
                 Section {
                     TextField("Name of book", text: $title)
@@ -54,7 +54,7 @@ struct AddBookView: View {
                 }
             }
             .navigationTitle("Add Book")
-        }
+//        }
     }
 }
 
