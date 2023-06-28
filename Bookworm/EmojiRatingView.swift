@@ -12,13 +12,13 @@ struct EmojiRatingView: View {
     
     var body: some View {
         switch rating {
-        case 1:
+        case 0:
             return Text("🙈")
-        case 2:
+        case 1:
             return Text("😔")
-        case 3:
+        case 2:
             return Text("🙂")
-        case 4:
+        case 3:
             return Text("😊")
         default:
             return Text("🤩")

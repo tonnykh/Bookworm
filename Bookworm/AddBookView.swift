@@ -16,13 +16,14 @@ struct AddBookView: View {
     @State private var rating = 3
     @State private var genre = "Fantasy"
     @State private var review = ""
+    @State private var date = Date.now
     
     let genres = [
         "Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"
     ]
     
     var body: some View {
-//        NavigationStack {
+        NavigationStack {
             Form {
                 Section {
                     TextField("Name of book", text: $title)
@@ -48,13 +49,23 @@ struct AddBookView: View {
                     newBook.rating = Int16(rating)
                     newBook.genre = genre
                     newBook.review = review
+                    newBook.date = date
                     
                     try? moc.save()
                     dismiss()
                 }
+                .disabled(hasValidDetails == false)
             }
             .navigationTitle("Add Book")
-//        }
+        }
+    }
+    
+    var hasValidDetails: Bool {
+        if title.trimmingCharacters(in: .whitespaces).isEmpty || author.trimmingCharacters(in: .whitespaces
+        ).isEmpty {
+            return false
+        }
+        return true
     }
 }
 
